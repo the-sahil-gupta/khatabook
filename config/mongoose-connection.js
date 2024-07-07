@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/khaatabook')
-    .then(() => {
+mongoose.connect(process.env.MONGO_DB_URI).then(() => {
         console.log('Connected to Database');
-    })
-    .catch((err) => {
-        console.error('Failed to connect to MongoDB:', err);
     });
-  
 
-module.exports = mongoose.connection;
+const db = mongoose.connection;
+
+
+
+module.exports = db;
   
 
 
