@@ -4,8 +4,7 @@ const path = require('path');
 
 require('dotenv').config();
 
-const indexRouter = require('./routes/indexRouter');
-const profileRouter = require('./routes/profileRouter');
+const indexRouter = require('./routes/index-router');
 const db = require('./config/mongoose-connection');
 
 app.set('view engine', 'ejs');
@@ -15,8 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/profile', profileRouter);
 
 app.listen(3000, () => {
-    console.log('Server is running');
+	console.log('Server is running');
 });
