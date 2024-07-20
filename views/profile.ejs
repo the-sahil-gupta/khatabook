@@ -38,26 +38,37 @@
 		<div class="bg-zinc-100 p-3 px-5 rounded-md">
 			<div class="flex gap-10 items-center">
 				<div class="flex justify-center gap-2 items-start">
+					<% if(hisaab.encrypted){%>
 					<div
 						class="px-3 py-2 rounded-md flex gap-2 items-center bg-blue-500 text-white">
 						<i class="text-xs ri-lock-2-line"></i>
 						<h3 class="text-sm">Encrypted</h3>
 					</div>
+					<% } %> <% if(hisaab.editpermissions){%>
 					<div
 						class="px-3 py-2 rounded-md flex gap-2 items-center bg-teal-600 text-white">
 						<i class="text-xs ri-check-line"></i>
-						<h3 class="text-sm">Available</h3>
+						<h3 class="text-sm">Available to edit</h3>
 					</div>
+					<% } %> <% if(hisaab.shareable){%>
 					<div
 						class="px-3 py-2 rounded-md bg-zinc-300/70 flex items-center justify-center">
+						<h3 class="text-sm">Shareable ,</h3>
 						<i class="text-sm ri-eye-off-line"></i>
 					</div>
+					<% } else { %>
+					<div
+						class="px-3 py-2 rounded-md bg-zinc-300/70 flex items-center justify-center">
+						<h3 class="text-sm">Non-shareable ,</h3>
+						<i class="text-sm ri-eye-line"></i>
+					</div>
+					<% } %>
 				</div>
 				<h3 class="text-xs text-zinc-400">Created on 12-05-2024</h3>
 			</div>
 			<div class="mt-3">
-				<h3 class="font-medium text-lg">Some title</h3>
-				<a class="text-zinc-400 text-sm" href="/hisaab/view/somehisaabid"
+				<h3 class="font-medium text-lg"><%= hisaab.title %></h3>
+				<a class="text-zinc-400 text-sm" href="/hisaab/view/<%= hisaab._id%>"
 					>view hisaab</a
 				>
 			</div>

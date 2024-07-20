@@ -28,9 +28,8 @@ module.exports.createHisaabController = async function (req, res) {
 		let user = await userModel.findOne({ email: req.user.email });
 		user.hisaab.push(hisaabCreated._id);
 		await user.save();
+		res.redirect('/profile');
 	} catch (err) {
 		res.send(err.message);
 	}
-
-	res.redirect('/profile');
 };
