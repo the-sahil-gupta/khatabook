@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
 		required: [true, 'Password is required'],
 		select: false,
 	},
-	hisaabs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Hisaab' }],
+	hisaab: [{ type: mongoose.Schema.Types.ObjectId, ref: 'hisaab' }],
 });
 
 module.exports = mongoose.model('user', userSchema);

@@ -9,7 +9,11 @@ const hisaabSchema = mongoose.Schema(
 			maxLength: 100,
 			required: true,
 		},
-		description: {},
+		description: {
+			type: String,
+			required: true,
+			trim: true,
+		},
 		user: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'User',
@@ -19,7 +23,7 @@ const hisaabSchema = mongoose.Schema(
 			default: false,
 		},
 		passcode: {
-			type: Boolean,
+			type: String,
 			default: '',
 		},
 		shareable: {
@@ -34,4 +38,4 @@ const hisaabSchema = mongoose.Schema(
 	{ timestamp: true }
 );
 
-module.exports = mongoose.model('Hisaab', hisaabSchema);
+module.exports = mongoose.model('hisaab', hisaabSchema);
