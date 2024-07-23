@@ -7,7 +7,7 @@ const {
 	registerController,
 	loginController,
 	logoutController,
-	profilePageController,
+	profileController,
 } = require('../controllers/index-controller');
 
 const {
@@ -22,6 +22,6 @@ router.get('/logout', logoutController);
 router.post('/register', registerController);
 router.post('/login', loginController);
 
-router.get('/profile', isLoggedIn, profilePageController);
+router.get('/profile', isLoggedIn, profileController);
 
 module.exports = router;

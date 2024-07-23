@@ -1,3 +1,3 @@
 module.exports.profilePageController = function (req, res) {
-    res.render("profile");
-}
+	res.render('profile');
+};
