@@ -60,16 +60,19 @@ module.exports.logoutController = async (req, res) => {
 module.exports.profileController = async function (req, res) {
 	let byDate = Number(req.query.byDate);
 	let { startDate, endDate } = req.query;
+	try {
+		byDate = byDate ? byDate : -1;
+		startDate = startDate ? startDate : new Date('1970-01-01');
+		endDate = endDate ? endDate : new Date();
 
-	byDate = byDate ? byDate : -1;
-	startDate = startDate ? startDate : new Date('1970-01-01');
-	endDate = endDate ? endDate : new Date();
+		let user = await userModel.findOne({ email: req.user.email }).populate({
+			path: 'hisaab',
+			match: { createdAt: { $gte: startDate, $lte: endDate } },
+			options: { sort: { createdAt: byDate } },
+		});
 
-	let user = await userModel.findOne({ email: req.user.email }).populate({
-		path: 'hisaab',
-		match: { createdAt: { $gte: startDate, $lte: endDate } },
-		options: { sort: { createdAt: byDate } },
-	});
-
-	res.render('profile', { user });
+		res.render('profile', { user });
+	} catch (err) {
+		res.send(err.message);
+	}
 };

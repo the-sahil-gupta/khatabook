@@ -33,3 +33,13 @@ module.exports.createHisaabController = async function (req, res) {
 		res.send(err.message);
 	}
 };
+module.exports.viewHisaabController = async function (req, res) {
+	try {
+		let hisaab = await hisaabModel
+			.findOne({ _id: req.params.id })
+			.populate('user');
+		res.render('hisaab', { hisaab, loggedin: false });
+	} catch (err) {
+		res.send(err.message);
+	}
+};

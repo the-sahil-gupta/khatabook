@@ -4,6 +4,7 @@ const router = express.Router();
 const {
 	createHisaabController,
 	hisaabPageController,
+	viewHisaabController,
 } = require('../controllers/hisaab-controller');
 
 const {
@@ -13,5 +14,6 @@ const {
 
 router.get('/create', isLoggedIn, hisaabPageController);
 router.post('/create', isLoggedIn, createHisaabController);
+router.get('/view/:id', isLoggedIn, viewHisaabController);
 
 module.exports = router;
