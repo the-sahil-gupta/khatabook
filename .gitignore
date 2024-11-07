@@ -2,3 +2,4 @@ designs/
 
 node_modules/
 .env
+.env/
